@@ -1,6 +1,11 @@
 import React, { Fragment } from 'react'
 
 const Table = (props) => {
+  let money = props.money
+
+  if(money <= 0){
+    money = 0
+  }
 
   const renderPlates = (array) => {
     return array.map((x, index) => {
@@ -11,7 +16,7 @@ const Table = (props) => {
   return (
     <Fragment>
       <h1 className="remaining">
-        You have: ${ /* Give me how much money I have left */ } remaining!
+        You have: ${money} remaining!
       </h1>
       <div className="table">
         <div className="stack">
@@ -21,7 +26,7 @@ const Table = (props) => {
                and renders an empty plate
                for every element in the array
             */
-            renderPlates([])
+            renderPlates([props.sushis])
           }
         </div>
       </div>
