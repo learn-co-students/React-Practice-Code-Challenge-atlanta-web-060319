@@ -47,8 +47,13 @@ class App extends Component {
   }
   }
 
+  getEatenSushi = () => {
+    let eatenSushi = this.state.sushis.filter(sushi => sushi.eaten )
+    return eatenSushi
+   
+  }
+
   handleMore = () => {
-    console.log("inside handleMore")
     let moreSushi = this.state.sushiIndex + 4
     this.setState({sushiIndex: moreSushi})
   }
@@ -57,7 +62,7 @@ class App extends Component {
     return (
       <div className="app">
         <SushiContainer  sushis={this.getSushis()} eatSushi={this.eatSushi} handleMore={this.handleMore}/>
-        <Table wallet={this.state.wallet}/>
+        <Table filteredSushi={this.getEatenSushi()} wallet={this.state.wallet}/>
       </div>
     );
   }
